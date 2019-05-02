@@ -81,7 +81,16 @@ public class App
         aeropuertos.save(a2);
     }
     public static void obtenerAeropuertos() {
+         Session session = sessFac.openSession();
+    
+        Query q = session.createQuery("from Aeropuerto a");
         
+        for (Object item : q.list()) {
+            Aeropuerto a = (Aeropuerto)item;
+            System.out.println(a);
+        }
+        
+        session.close();
     }
     public static void main( String[] args )
     {
